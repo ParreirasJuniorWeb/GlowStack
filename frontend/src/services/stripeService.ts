@@ -1,5 +1,4 @@
 import type { CartItem } from '../types/glowstack.ts';
-import "dotenv/config";
 
 // Substitua pela URL real da sua Firebase Cloud Function ou API Backend
 // Em src/services/stripeService.ts
