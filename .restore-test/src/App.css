@@ -1,0 +1,9 @@
+@import url(' https://fonts.cdnfonts.com/css/poppins ');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
