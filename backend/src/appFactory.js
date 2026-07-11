@@ -18,11 +18,12 @@ export const createApp = () => {
   app.use(
     cors({
       origin: [
-        "https://glow-stack-original.vercel.app/", // 👈 COLE AQUI A URL OFICIAL GERADA PELA VERCEL
+        "https://glow-stack-original.vercel.app", // 👈 COLE AQUI A URL OFICIAL GERADA PELA VERCEL
         "http://localhost:5173", // Mantém o acesso local para seus testes
       ],
       methods: ["GET", "POST", "PUT", "DELETE"],
       allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true
     }),
   );
 
@@ -44,9 +45,9 @@ export const createApp = () => {
   app.use(express.json());
 
   // 3. Rotas auxiliares e de domínio
-  app.use(logRoutes);
   app.use(checkoutRoutes);
   app.use("/admin", adminRoutes);
+  app.use(logRoutes);
 
   // 4. Rota crítica com limiter
   app.post("/api/custom-login", loginLimiter, (req, res) => {

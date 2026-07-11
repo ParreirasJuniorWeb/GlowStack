@@ -5,8 +5,7 @@ import type { CartItem } from '../types/glowstack.ts';
 // const STRIPE_API_URL = 'http://localhost:3001/create-checkout-session'; 
 // Em desenvolcimento
 const STRIPE_API_URL = import.meta.env.VITE_NODE_ENV === 'production' 
-  ? 'https://glowstack.onrender.com/create-checkout-session' // 👈 URL futura do seu backend em produção
-  // 👈 A URL gerada pelo seu Render
+  ? 'https://glowstack.onrender.com/create-checkout-session' // 👈 A URL gerada pelo seu Render
   : 'http://localhost:3001/create-checkout-session';
 
 interface CheckoutResponse {
