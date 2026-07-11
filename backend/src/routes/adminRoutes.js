@@ -1,8 +1,10 @@
 import "dotenv/config"; // 👈 Adicione este import no topo de cada arquivo de rotas que usa o Stripe
+import admin from 'firebase-admin';
 import { Router } from "express";
 import { db } from "../config/firebaseAdmin.js";
 import { requireAdmin } from "../middlewares/authMiddleware.js";
 import { Timestamp } from "firebase-admin/firestore";
+import { stripe } from "../config/stripe.js"; // 👈 Importa a instância já configurada e segura
 
 const router = Router();
 
@@ -109,7 +111,7 @@ router.post("/products", requireAdmin, async (req, res) => {
     });
   } catch (error) {
     console.error("Erro ao cadastrar novo produto via admin:", error);
-    return res.status(500).json({ message: "Erro interno ao criar produto." });
+    return res.status(500).json({ message: "Erro interno ao criar produto.", error: error.message });
   }
 });
 
@@ -161,7 +163,7 @@ router.put("/products/update/:id", requireAdmin, async (req, res) => {
 
     return res.status(200).json({ message: "Produto atualizado com sucesso!" });
   } catch (error) {
-    return res.status(500).json({ message: "Erro ao atualizar produto." });
+    return res.status(500).json({ message: "Erro ao atualizar produto.", error: error.message });
   }
 });
 
@@ -189,7 +191,7 @@ router.delete("/products/:id", requireAdmin, async (req, res) => {
 
     return res.status(200).json({ message: "Produto removido com sucesso!" });
   } catch (error) {
-    return res.status(500).json({ message: "Erro ao deletar produto." });
+    return res.status(500).json({ message: "Erro ao deletar produto.", error: error.message});
   }
 });
 
@@ -245,7 +247,7 @@ router.get("/billing/dashboard", requireAdmin, async (req, res) => {
     console.error("Erro ao calcular faturamento administrativo:", error);
     return res
       .status(500)
-      .json({ message: "Erro interno ao processar relatório financeiro." });
+      .json({ message: "Erro interno ao processar relatório financeiro.", error: error.message});
   }
 });
 
