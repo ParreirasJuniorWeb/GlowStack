@@ -15,7 +15,16 @@ import { rateLimit } from "express-rate-limit";
 export const createApp = () => {
   const app = express();
 
-  app.use(cors({ origin: true }));
+  app.use(
+    cors({
+      origin: [
+        "https://glow-stack-original.vercel.app/", // 👈 COLE AQUI A URL OFICIAL GERADA PELA VERCEL
+        "http://localhost:5173", // Mantém o acesso local para seus testes
+      ],
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+    }),
+  );
 
   const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
