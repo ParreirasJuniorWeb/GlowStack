@@ -6,6 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss(), babel({ presets: [reactCompilerPreset()] })],
    define: {
-    'process.env': {}
+    'process.env': {
+      env: { NODE_ENV: 'production' },
+      browser: true,
+      version: '',
+      argv: []
+    }
   }
 });
