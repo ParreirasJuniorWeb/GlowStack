@@ -31,7 +31,7 @@ export const AdminDashboard: React.FC = () => {
   const { showBoundary } = useErrorBoundary();
 
   // DEGUB: Verificar qual URL está sendo redirecionado o fluxo da aplicação.
-  const SERVER_URL = import.meta.env.GLOWSTACK_SERVER_URL;
+  const SERVER_URL = import.meta.env.VITE_GLOWSTACK_SERVER_URL;
   alert(SERVER_URL);
 
   // Estados do CRUD e Interface
