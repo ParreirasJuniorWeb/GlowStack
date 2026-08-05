@@ -115,6 +115,7 @@ src/
     SMTP_PORT=2525
     SMTP_USER=seu_usuario
     SMTP_PASS=sua_senha
+    GLOWSTACK_SERVER_URL=http:/localhost:3001
     ```
 4.  (Opcional) Popule seu banco de dados rodando o script de seed corrigido para ES Modules:
     ```bash
