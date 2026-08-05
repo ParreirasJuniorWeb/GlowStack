@@ -30,6 +30,10 @@ export const AdminDashboard: React.FC = () => {
   const { formatCurrency } = useCart();
   const { showBoundary } = useErrorBoundary();
 
+  // DEGUB: Verificar qual URL está sendo redirecionado o fluxo da aplicação.
+  const SERVER_URL = import.meta.env.GLOWSTACK_SERVER_URL;
+  console.log(SERVER_URL.trim());
+
   // Estados do CRUD e Interface
   const [isSaving, setIsSaving] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -78,7 +82,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `${import.meta.env.GLOWSTACK_SERVER_URL}/admin/products/${productId}`,
+        `${SERVER_URL.trim()}/admin/products/${productId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
@@ -113,7 +117,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `${import.meta.env.GLOWSTACK_SERVER_URL}/admin/products/update/${editingProduct.id}`,
+        `${SERVER_URL.trim()}/admin/products/update/${editingProduct.id}`,
         {
           method: "PUT",
           headers: {
