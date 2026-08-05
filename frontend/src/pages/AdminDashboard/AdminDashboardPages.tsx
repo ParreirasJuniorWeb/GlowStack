@@ -78,7 +78,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `http://localhost:3001/admin/products/${productId}`,
+        `${import.meta.env.GLOWSTACK_SERVER_URL}/admin/products/${productId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
@@ -113,7 +113,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `http://localhost:3001/admin/products/update/${editingProduct.id}`,
+        `${import.meta.env.GLOWSTACK_SERVER_URL}/admin/products/update/${editingProduct.id}`,
         {
           method: "PUT",
           headers: {
