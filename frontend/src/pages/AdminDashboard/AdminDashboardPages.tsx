@@ -30,9 +30,8 @@ export const AdminDashboard: React.FC = () => {
   const { formatCurrency } = useCart();
   const { showBoundary } = useErrorBoundary();
 
-  // DEGUB: Verificar qual URL está sendo redirecionado o fluxo da aplicação.
-  const SERVER_URL = import.meta.env.VITE_GLOWSTACK_SERVER_URL;
-  alert(SERVER_URL);
+  // URL DO SERVIDOR GLOWSTACK: Verificar qual URL está sendo redirecionado o fluxo da aplicação.
+  const SERVER_URL = import.meta.env.VITE_GLOWSTACK_SERVER_URL || "https://glowstack.onrender.com";
 
   // Estados do CRUD e Interface
   const [isSaving, setIsSaving] = useState(false);
