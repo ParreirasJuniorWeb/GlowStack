@@ -32,7 +32,7 @@ export const AdminDashboard: React.FC = () => {
 
   // DEGUB: Verificar qual URL está sendo redirecionado o fluxo da aplicação.
   const SERVER_URL = import.meta.env.GLOWSTACK_SERVER_URL;
-  console.log(SERVER_URL.trim());
+  alert(SERVER_URL);
 
   // Estados do CRUD e Interface
   const [isSaving, setIsSaving] = useState(false);
@@ -82,7 +82,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `${SERVER_URL.trim()}/admin/products/${productId}`,
+        `${SERVER_URL}/admin/products/${productId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
@@ -117,7 +117,7 @@ export const AdminDashboard: React.FC = () => {
       const token = await auth.currentUser?.getIdToken();
 
       const response = await fetch(
-        `${SERVER_URL.trim()}/admin/products/update/${editingProduct.id}`,
+        `${SERVER_URL}/admin/products/update/${editingProduct.id}`,
         {
           method: "PUT",
           headers: {
