@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { useCart } from "../../hooks/useCart";
 import { getAuth } from "firebase/auth";
@@ -100,14 +100,11 @@ export const AdminDashboard: React.FC = () => {
   };
 
   // 3. Ação de Atualização Completa com Imagem (UPDATE)
-  const handleUpdateProduct = useCallback(async (e: React.FormEvent) => {
+  const handleUpdateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaving(true);
 
     try {
-       // ⚠️ Se 'editingProduct' for nulo por padrão, trate isso antes
-      if (!editingProduct) return; 
-      
       let finalImageUrl = editingProduct.currentImageUrl;
 
       // Se o administrador selecionou uma nova foto, faz o upload primeiro
@@ -149,7 +146,7 @@ export const AdminDashboard: React.FC = () => {
     } finally {
       setIsSaving(false);
     }
-  }, [editingProduct, imageFile, refresh]); // 👈 Dependências obrigatórias incluídas!
+  };
 
   if (loading) {
     return (
