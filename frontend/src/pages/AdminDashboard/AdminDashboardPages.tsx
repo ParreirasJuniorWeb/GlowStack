@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { useCart } from "../../hooks/useCart";
 import { getAuth } from "firebase/auth";
